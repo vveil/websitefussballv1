@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text">
-      hallo hallo
+      ich bin die home component
     </div>
   </div>
 </template>
@@ -18,6 +18,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .text {
-  background-color: #000000;
+  background-color: #123123;
 }
 </style>

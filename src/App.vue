@@ -1,17 +1,15 @@
 <template>
   <div id="app">
-    <home msg="Ja moin"/>
+    <formular msg="formular" />
   </div>
 </template>
 
 <script>
-import home from './components/home.vue'
 import formular from './components/formular.vue'
 
 export default {
   name: 'App',
   components: {
-    home,
     formular
   }
 }

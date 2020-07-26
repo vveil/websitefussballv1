@@ -18,6 +18,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .text {
-  background-color: #000000;
+  background-color: #ffffff;
 }
 </style>
