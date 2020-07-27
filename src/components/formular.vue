@@ -44,8 +44,8 @@
             <label for="dserklärung">Ist ok</label>
           </div>
           <br />
-          <div class="button">
-            <input type="button" id="absenden" value="Absenden" />
+          <div class="absendenButton">
+            <input type="button" id="absenden" v-on:click="absenden" value="Absenden" />
           </div>
         </div>
       </form>
