@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="webpage">
     <div class="event">
       <h2 class="eventHeading">Event-Name</h2>
       <br />
@@ -27,16 +27,16 @@
           <input class="Eingabe" type="text" id="address" name="address" />
           <br />
           <br />
-          <div class="Eingabe">
+          <div id="Eingabe2">
             <label for="plz">PLZ, Ort</label>
             <br />
-            <input type="number" id="plz" name="plz" />
-            <input type="text" id="city" name="city" />
+            <input type="number" id="left" name="plz" />
+            <input type="text" id="right" name="city" />
           </div>  
           <br />
           <br />
           <div class="button">
-            <input type="button" id="addPerson" value="Weitere Person hinzufügen" />
+            <input style=color:teal type="button" id="addPerson" value="Weitere Person hinzufügen" />
           </div>
           <br />
           <div class="checkbox">
@@ -44,9 +44,11 @@
             <label for="dserklärung">Ist ok</label>
           </div>
           <br />
-          <div class="button">
-            <input type="button" id="absenden" value="Absenden" />
-          </div>
+          <!-- <div class="button">
+            <input style=color:teal type="button" id="absenden" value="Absenden" />
+          </div> -->
+          <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+          <p><button class="w3-button w3-block w3-teal" style="width:100%">Absenden</button></p>
         </div>
       </form>
     </div>
@@ -66,16 +68,37 @@ export default {
 <style scoped>
 /* Das Kontaktformular */
 form {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   /* width: 15em; Breite des Formulars */
   /* padding: 20px; */
-  border: 1px solid #8c8c8c;
+  /* border: 1px solid #8c8c8c; */
+}
+input[type="checkbox"] {
+  display:none;
+}
+input[type="checkbox"] + label::before {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  border: 2px solid teal;
+  background-color: #fff;
+  display: block;
+  content: "";
+  float: left;
+  margin-right: 5px;
+}
+input[type="checkbox"]:checked+label::before {
+  box-shadow: inset 0px 0px 0px 3px #fff;
+  background-color: teal;
 }
 label {
-  /* Beschriftung auf eigener Zeile */
   display: block;
-  cursor: pointer; /* Mauszeiger wird zur Hand */
+  cursor: pointer;
   font-size: 0.85em;
+}
+.webpage, .event, .tformWrapper {
+  background-color: azure;
+  color: teal;
 }
 /* input#absenden,
 textarea {
@@ -86,13 +109,6 @@ textarea {
 /* textarea {
   height: 7em;
 } */
-/* input:focus,
-textarea:focus {
-  background-color: #d9d9d9;
-} */
-.text {
-  background-color: #ffffff;
-}
 .formular {
   display: flex;
   justify-content: center;
@@ -106,16 +122,36 @@ textarea:focus {
   font-size: 1em;
   width: 100%m;
   margin-bottom: 1em;
+  border: solid 1px;
+  border-radius: 0px;
+  color:teal;
+  /* background-color: teal; */
+  display: flex;
 }
-#plz {
+.Eingabe2 {
+  width: 100%
+}
+  
+#left {
   width: 5.7em;
   margin-right: 0.3em;
+  display: inline-block;
+  min-width: 30%;
 }
-#city {
+#right {
   width: 8em;
+  display: block;
+  text-align: left;
 }
 input {
   font-size: 1em;
   width: 100%;
+  border:1px solid #d9d9d9;
+	border-radius:4px;
+    -webkit-border-radius:4px;
+	padding:8px 13px;
+}
+.Eingabe {
+  width: 15em;
 }
 </style>
