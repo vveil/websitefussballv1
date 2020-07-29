@@ -1,56 +1,61 @@
 <template>
-  <div class="webpage">
-    <div class="event">
-      <h2 class="eventHeading">Event-Name</h2>
-      <br />
-    </div>
-    <div class="formular">
-      <form class="tForm" @submit="addPerson">
-        <div class="tformWrapper">
-          <eventSelector />
-          <label for="fname">Vorname</label>
-          <br />
-          <input class="Eingabe" type="text" id="fname" v-model="fname" name="fname" />
-          <br />
-          <br />
-          <label for="lname">Nachname</label>
-          <br />
-          <input class="Eingabe" type="text" id="lname" v-model="lname" name="lname" />
-          <br />
-          <br />
-          <label for="phone">Telefon</label>
-          <br />
-          <input class="Eingabe" type="text" id="phone" v-model="phone" name="phone" />
-          <br />
-          <br />
-          <label for="address">Straße, Hausnummer</label>
-          <br />
-          <input class="Eingabe" type="text" id="address" v-model="address" name="address" />
-          <br />
-          <br />
-          <div id="Eingabe2">
-            <label for="plz">PLZ, Ort</label>
-            <br />
-            <input type="number" id="left" v-model="plz" name="plz" />
-            <input type="text" id="right" v-model="city" name="city" />
-          </div>  
-          <br />
-          <br />
-          <div class="button">
-            <input style=color:teal type="button" id="addPerson" value="Weitere Person hinzufügen" />
-          </div>
-          <br />
-          <div class="checkbox">
-            <input type="checkbox" id="dserklärung" />
-            <label for="dserklärung">Ist ok</label>
-          </div>
-          <br />
-          <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
-          <p><input type="submit" value="Absenden" class="w3-button w3-block w3-teal" style="width:100%" /></p>
+    <div class="wrapper">
+        <div class="event">
+            <h1>Event-Name</h1>
         </div>
-      </form>
+
+        <div class="form">
+        <form>
+            <div class="top-form">
+              <eventSelector />
+                <div class="inner-form">
+                    <div class="label">Vorname</div>
+                    <input type="text" name="vorname">
+                </div>
+                <br />
+                <div class="inner-form">
+                    <div class="label">Nachname</div>
+                    <input type="text" name="nachname">
+                </div>
+                <br />
+                <div class="inner-form">
+                    <div class="label">Telefon</div>
+                    <input type="number" name="telefon">
+                </div>
+                <br />
+                <div class="inner-form">
+                    <div class="label">Straße, Hausnummer</div>
+                    <input type="text" name="adresse">
+                </div>
+            </div>
+
+            <div class="mid-form">
+                <div class="inner-mid">
+                    <div class="label">PLZ</div>
+                    <input type="number" name="plz">
+                </div>
+                <div class="inner-mid2">
+                    <div class="label">Ort</div>
+                    <input type="text" name="ort">
+                </div>
+            </div>
+            <br />
+            <div class="bot-form">
+                <button class="breakout-button" id="btn" type="button">Weitere Person hinzufügen</button>
+                <br />
+                <div class="checkbox">
+                    <input type="checkbox" id="dserklärung" />
+                    <label for="dserklärung">Ist ok</label>
+                </div>
+                <br />
+                <br />
+                <div class="btn2">
+                    <input type="submit" id="btn2" value="Absenden" />
+                </div>
+            </div>
+        </form>    
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -105,87 +110,174 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-input[type="checkbox"] {
-  display:none;
+
+*{
+    margin: 0;
+    padding: 0;
+    user-select: none;
 }
-input[type="checkbox"] + label::before {
-  width: 15px;
-  height: 15px;
-  border-radius: 15px;
-  border: 2px solid teal;
-  background-color: #fff;
-  display: block;
-  content: "";
-  float: left;
-  margin-right: 5px;
+
+.wrapper {
+    background: #ffffff;
+    width: 100%;
+    max-width: 25em;
+    margin: 3% auto 0;
+    padding: 20px;
+    box-sizing: border-box;
+    /* display: flex;
+    justify-content: center; */
 }
-input[type="checkbox"]:checked+label::before {
-  box-shadow: inset 0px 0px 0px 3px #fff;
-  background-color: teal;
+
+.event {
+    text-align: center;
+    height: min-content;
+    color: teal;
 }
-label {
-  display: block;
-  cursor: pointer;
-  font-size: 0.85em;
+
+.event h1 {
+    letter-spacing: 1px;
 }
-.webpage, .event, .tformWrapper {
-  background-color: azure;
-  color: teal;
+
+.form {
+    width: 100%;
+    margin-top: 10%;
 }
-/* input#absenden,
-textarea {
-  width: 15em;
-  border: 0.05em solid #8c8c8c;
-  margin-bottom: 1em;
+
+/* form {
+    text-align: center;
 } */
-/* textarea {
-  height: 7em;
-} */
-.formular {
-  display: flex;
-  justify-content: center;
+
+.top-form,
+.mid-form {
+    width: 92%;
+    min-height: 65px;
+    margin: 10px 0;
+    /* overflow: hidden; */
 }
-.tformWrapper {
-  /* width: 15em; */
-  text-align: left;
+
+.bot-form {
+    width: 100%;
 }
-.button {
-  text-align: center;
-  font-size: 1em;
-  width: 100%m;
-  margin-bottom: 1em;
-  border: solid 1px;
-  border-radius: 0px;
-  color:teal;
-  /* background-color: teal; */
-  display: flex;
-}
-.Eingabe2 {
-  width: 100%
-}
-  
-#left {
-  width: 5.7em;
-  margin-right: 0.3em;
-  display: inline-block;
-  min-width: 30%;
-}
-#right {
-  width: 8em;
-  display: block;
-  text-align: left;
-}
+
 input {
   font-size: 1em;
   width: 100%;
-  border:1px solid #d9d9d9;
-	border-radius:4px;
-    -webkit-border-radius:4px;
-	padding:8px 13px;
+  border :1px solid #d9d9d9;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+	padding: 8px 13px;
 }
-.Eingabe {
-  width: 15em;
+
+#btn {
+    border: 0;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+	padding: 0;
+    color: teal;
+    display: block;
+    justify-content: center;
+    width: 100%;
+    padding: 0.6rem 2rem;
+    background: transparent;
+    border: 1px solid;
+    /* transition: background 100ms ease; */
+    position: static;
+}
+    
+#btn2 {
+    border: 0;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+	padding: 0;
+    background-color: teal;
+    color: #ffffff;
+    padding: 0.8rem 2rem;
+    /* transition: background 100ms ease; */
+    position: static;
+    display: block;
+}
+/* .form input [type="text"],
+.form input [type="number"] {
+    padding: 15px 5px;
+    box-sizing: border-box;
+    width: 100%;
+    border: 2px solid #fff;
+    border-radius: 2px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.form input:focus {
+    border-color: teal;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.0125),
+                0 0 8px rgba(76, 161, 175, 0.5);
+} */
+
+.form .label {
+    margin-bottom: 5px;
+}
+
+.mid-form .inner-mid {
+    width: 32%;
+    float: left;
+    margin-right: 10%;
+}
+
+.mid-form .inner-mid2 {
+    width: 55%;
+    float: right;
+}
+
+/* .mid-form .inner-form:last-child {
+    margin-right: 0;
+} */
+
+.label {
+    display: block;
+    font-size: 0.85em;
+    float: left;
+    color: teal;
+}
+
+label {
+    float: left;
+    margin-left: 5%;
+    font-size: 0.85em;
+    color:#000000;
+}
+
+.btn {
+    background: #ffffff;
+    width: 100%;
+    border: solid 1px;
+    text-align: center;
+    color: teal;
+    display: block;
+    font-size: 2em;
+}
+
+input[type="checkbox"] {
+    float: left;
+    width: 15px;
+    height: 15px;
+    text-align: left;
+}
+
+.btn2 {
+    background: teal;
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+}
+
+@media screen and (max-width: 460px) {
+    .wrapper {
+        margin: 25px auto 0;
+    }
+    .mid-form .inner-form {
+        width: 100%;
+        margin: 5px 0;
+    }
 }
 </style>
