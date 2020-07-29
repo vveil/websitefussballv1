@@ -3,7 +3,8 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/formular">Teilnehmer Formular</router-link> |
-      <router-link to="/about">Über uns</router-link>
+      <router-link to="/about">Über uns</router-link> |
+      <router-link to="/login">Vereinslogin</router-link>
     </div>
     <router-view/>
     <!-- <formular v-on:add-person="addPerson" /> -->
