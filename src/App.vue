@@ -1,19 +1,16 @@
 <template>
   <div id="app">
-    <formular msg="formular" />
-    <adminlogin />
+    <formularNeu />
   </div>
 </template>
 
 <script>
-import formular from './components/formular.vue'
-import adminlogin from './components/adminlogin.vue'
+import formularNeu from './components/formularNeu.vue'
 
 export default {
   name: 'App',
   components: {
-    formular,
-    adminlogin
+    formularNeu
   }
 }
 </script>

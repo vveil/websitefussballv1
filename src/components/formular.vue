@@ -1,11 +1,13 @@
 <template>
-  <div class="webpage">
+  <div class="wrapper">
+
     <div class="event">
       <h2 class="eventHeading">Event-Name</h2>
       <br />
     </div>
-    <div class="formular">
-      <form class="tForm">
+
+    <div class="form">
+      <form>
         <div class="tformWrapper">
           <label for="fname">Vorname</label>
           <br />
@@ -19,7 +21,7 @@
           <br />
           <label for="phone">Telefon</label>
           <br />
-          <input class="Eingabe" type="text" id="phone" name="phone" />
+          <input class="Eingabe" type="number" id="phone" name="phone" />
           <br />
           <br />
           <label for="address">Straße, Hausnummer</label>
@@ -44,11 +46,11 @@
             <label for="dserklärung">Ist ok</label>
           </div>
           <br />
-          <!-- <div class="button">
-            <input style=color:teal type="button" id="absenden" value="Absenden" />
-          </div> -->
-          <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-          <p><button class="w3-button w3-block w3-teal" style="width:100%">Absenden</button></p>
+          <div class="button">
+            <input style=color:teal type="submit" id="absenden" value="Absenden" />
+          </div>
+          <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+          <p><button class="w3-button w3-block w3-teal" style="width:100%">Absenden</button></p> -->
         </div>
       </form>
     </div>
@@ -79,7 +81,7 @@ input[type="checkbox"] {
 input[type="checkbox"] + label::before {
   width: 15px;
   height: 15px;
-  border-radius: 15px;
+  /* border-radius: 15px; */
   border: 2px solid teal;
   background-color: #fff;
   display: block;
@@ -88,7 +90,6 @@ input[type="checkbox"] + label::before {
   margin-right: 5px;
 }
 input[type="checkbox"]:checked+label::before {
-  box-shadow: inset 0px 0px 0px 3px #fff;
   background-color: teal;
 }
 label {
@@ -97,7 +98,7 @@ label {
   font-size: 0.85em;
 }
 .webpage, .event, .tformWrapper {
-  background-color: azure;
+  /* background-color: azure; */
   color: teal;
 }
 /* input#absenden,
@@ -109,7 +110,7 @@ textarea {
 /* textarea {
   height: 7em;
 } */
-.formular {
+.form {
   display: flex;
   justify-content: center;
 }
