@@ -11,9 +11,8 @@
           <br />
           <input type="password" />
           <br />
-          <div id="buttonWrapper">
-            <input id="logInButton" type="button" value="Einloggen" />
-          </div>
+          <br />
+          <button class="logInBtn" id="buttonWrapper" name="einloggen" type="submit">Einloggen</button>
         </div>
       </form>
     </div>
@@ -34,9 +33,23 @@ export default {
 .text {
   background-color: #ffffff;
 }
-.lgLabel{
-    margin-top: 10px;
+.lgLabel {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  display: block;
+  font-size: 0.85em;
+  float: left;
+  color: teal;
 }
+
+label {
+  float: left;
+  margin-top: 5%;
+  font-size: 0.85em;
+  color: teal;
+  display: block;
+}
+
 .login {
   margin: 0 auto; /* to make the div center align to the browser */
   justify-content: center;
@@ -44,9 +57,35 @@ export default {
 }
 .formWrapper {
   text-align: left;
+  margin-top: 20%;
 }
 #buttonWrapper {
-  margin-top: 10px;
+  margin-top: 10%;
   text-align: end;
 }
+input {
+  font-size: 1em;
+  width: 90%;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  padding: 8px 13px;
+  float: right;
+}
+button {
+  font-size: 1em;
+  border: 1px solid;
+  justify-content: center;
+  padding: 0.6rem 2rem;
+  text-align: center;
+  float: right;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  background-color: teal;
+  color: #ffffff;
+  display: block;
+  text-align: center;
+  color: #ffffff;
+}
+
 </style>
