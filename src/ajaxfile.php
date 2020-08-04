@@ -6,44 +6,45 @@ $data = json_decode(file_get_contents("php://input"));
 $request = $data->request;
 
 // // Fetch All records
-// if($request == 1){
-//   $userData = mysqli_query($con,"select * from users order by id desc");
+if ($request == 1) {
+    echo "Entered request 1 successfully";
 
-//   $response = array();
-//   while($row = mysqli_fetch_assoc($userData)){
-//     $response[] = $row;
-//   }
+    $username = $data->username;
+    $password = $data->password;
 
-//   echo json_encode($response);
-//   exit;
-// }
+    $sql = "SELECT username, password FROM `verein` WHERE username = \"$username\" AND password = \"$password\"";
+    $user_data = mysqli_query($link, $sql);
+    if (mysqli_num_rows($user_data) == 0) {
+        echo "Gerade 0 Ergebnisse.";
+    } else {
+        echo "Sollte geklappt haben";
+    }
+
+    exit;
+}
 
 // add person
-if($request == 2){
+if ($request == 2) {
     echo "Entered request 2 successfully";
-    
-    $fname = $data->fname;
-    $lname = $data->lname;
-    $phone = $data->phone;
+
+    $fname = $data->vorname;
+    $lname = $data->nachname;
+    $phone = $data->telefon;
     $plz = $data->plz;
-    $city = $data->city;
-    $address = $data->address;
+    $city = $data->ort;
+    $address = $data->adresse;
     $eID = $data->eID;
 
     $sql = "INSERT INTO `teilnehmer`(name, vorname, telefonnummer, plz, ort, adresse, eID) VALUES(\"$lname\", \"$fname\", \"$phone\", \"$plz\", \"$city\", \"$address\", \"$eID\")";
-    
+
     if (mysqli_query($link, $sql)) {
         echo "New record created successfully";
-      } else {
+    } else {
         echo "Error: " . $sql . mysqli_error($link);
-      }
-
-    // mysqli_query($link, "INSERT INTO teilnehmer(name, vorname, telefonnummer, plz, ort, adresse, eID) VALUES('".$lname."','".$fname."','".$phone."', '".$plz."', '".$city."', '".$address."', '".$eID."')");
-    
-    // echo "Insert successfully";
+    }
 
     exit;
-  }
+}
 
 // Add record
 // if($request == 2){
@@ -83,4 +84,3 @@ if($request == 2){
 //   echo "Delete successfully";
 //   exit;
 // }
-?>

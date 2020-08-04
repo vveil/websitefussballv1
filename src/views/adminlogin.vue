@@ -1,18 +1,19 @@
 <template>
   <div>
     <div class="login">
-      <form>
+      <form @submit="login">
         <div class="formWrapper">
-          <label class="lgLabel">Username:</label>
+          <label class="lgLabel" name="username">Username:</label>
           <br />
           <input for="username" />
           <br />
-          <label class="lgLabel">Passwort:</label>
+          <label class="lgLabel" name="password">Passwort:</label>
           <br />
           <input type="password" />
           <br />
           <br />
           <button class="logInBtn" id="buttonWrapper" name="einloggen" type="submit">Einloggen</button>
+
         </div>
       </form>
     </div>
@@ -20,11 +21,26 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "adminlogin",
-  props: {
-    msg: String,
+  data () {
+    return {
+      username: '',
+      password: ''
+    }
   },
+  methods: {
+    login(){
+      axios.post('ajaxfile.php', {
+        request: 1,
+        username: this.username,
+        password: this.password
+      })
+      .then(res => alert(res.data))
+      .catch(err => console.debug(err));
+    }
+  }
 };
 </script>
 
