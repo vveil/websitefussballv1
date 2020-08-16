@@ -1,13 +1,12 @@
 <template>
   <div class="wrapper">
     <div class="event">
-      <h1>Event-Name</h1>
+      <h1>Sommerfest 2020</h1>
     </div>
 
     <div class="form">
       <form @input="checkInput" @submit="addPerson">
         <div class="top-form">
-          <eventSelector />
           <div class="inner-form">
             <div class="label">Vorname</div>
             <input type="text" name="vorname" />
@@ -40,31 +39,12 @@
           </div>
         </div>
         <br />
-        <!-- <div class="bot-form">
-          <button class="btn" id="btn" type="button">Weitere Person hinzufügen</button>
-        <br />-->
         <div class="checkbox">
           <input type="checkbox" id="dserklärung" />
           <label for="dserklärung">
             Hiermit willige ich die Verarbeitung der von mir angegebenen personenbezogenen Daten ein und erkläre mich mit den Datenschutzregelungen in der
-            <a
-              href="..."
-            >Datenschutzerklärung</a> einverstanden.
+            <a href="...">Datenschutzerklärung</a> einverstanden.
           </label>
-<<<<<<< HEAD
-        </div>
-        <br />
-        <br />
-        <button class="btn2" id="btn2" name="absenden" type="submit" disabled>
-          <div class="popup" v-on:click="myFunction">
-            Absenden
-            <span class="popuptext" id="myPopup">Formular erfolreich abgesendet</span>
-          </div>
-          <br />
-          <br />
-          <button class="btn2" id="btn2" name="absenden" type="submit">Absenden</button>
-=======
->>>>>>> TestBranchHanne
         </div>
         <br />
         <br />
@@ -74,7 +54,6 @@
             <span class="popuptext" id="myPopup">Formular erfolreich abgesendet</span>
           </div>
         </button>
-        <!-- </div> -->
       </form>
     </div>
   </div>
@@ -82,11 +61,11 @@
 
 <script>
 import axios from "axios";
-import eventSelector from "../components/eventSelector.vue";
+// import eventSelector from "../components/eventSelector.vue";
 export default {
   name: "Formular",
   components: {
-    eventSelector,
+    // eventSelector,
   },
   data() {
     return {
