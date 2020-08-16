@@ -5,7 +5,7 @@
     </div>
 
     <div class="form">
-      <form @change="checkInput" @submit="addPerson">
+      <form @submit="addPerson">
         <div class="top-form">
           <eventSelector />
           <div class="inner-form">
@@ -104,8 +104,6 @@ export default {
         })
         .then((res) => alert(res.data))
         .catch((err) => console.debug(err));
-
-      // this.$emit('add-person', newPerson)
     },
     checkInput() {
       if (this.vorname == "") {
