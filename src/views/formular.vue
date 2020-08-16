@@ -42,18 +42,24 @@
         <br />
         <!-- <div class="bot-form">
           <button class="btn" id="btn" type="button">Weitere Person hinzufügen</button>
-          <br /> -->
-          <div class="checkbox">
-            <input type="checkbox" id="dserklärung" />
-            <label for="dserklärung">Hiermit willige ich die Verarbeitung der von mir angegebenen personenbezogenen Daten ein und erkläre mich mit den Datenschutzregelungen in der <a href="...">Datenschutzerklärung</a> einverstanden.</label>
+        <br />-->
+        <div class="checkbox">
+          <input type="checkbox" id="dserklärung" />
+          <label for="dserklärung">
+            Hiermit willige ich die Verarbeitung der von mir angegebenen personenbezogenen Daten ein und erkläre mich mit den Datenschutzregelungen in der
+            <a
+              href="..."
+            >Datenschutzerklärung</a> einverstanden.
+          </label>
+        </div>
+        <br />
+        <br />
+        <button class="btn2" id="btn2" name="absenden" type="submit">
+          <div class="popup" v-on:click="myFunction">
+            Absenden
+            <span class="popuptext" id="myPopup">Formular erfolreich abgesendet</span>
           </div>
-          <br />
-          <br />
-          <button class="btn2" id="btn2" name="absenden" type="submit">
-            <div class="popup" onclick="myFunction()">Absenden
-               <span class="popuptext" id="myPopup">Absenden</span>
-            </div>
-          </button>
+        </button>
         <!-- </div> -->
       </form>
     </div>
@@ -101,7 +107,11 @@ export default {
           ort: newPerson.ort,
           eID: 2,
         })
-        .then((res) => alert(res.data))
+        .then((res) => {
+          alert(res.data);
+          var popup = document.getElementById("myPopup");
+          popup.classList.toggle("show");
+        })
         .catch((err) => console.debug(err));
     },
     checkInput() {
@@ -300,17 +310,17 @@ input[type="checkbox"] {
 /* The actual popup (appears on top) */
 .popup .popuptext {
   visibility: hidden;
-  width: 160px;
+  width: 260px;
   background-color: #555;
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  padding: 8px 0;
+  padding: 10px 0;
   position: absolute;
   z-index: 1;
-  bottom: 125%;
+  bottom: 200%;
   left: 50%;
-  margin-left: -80px;
+  margin-left: -130px;
 }
 
 /* Popup arrow */
@@ -329,18 +339,26 @@ input[type="checkbox"] {
 .popup .show {
   visibility: visible;
   -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s
+  animation: fadeIn 1s;
 }
 
 /* Add animation (fade in the popup) */
 @-webkit-keyframes fadeIn {
-  from {opacity: 0;} 
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity:1 ;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media screen and (max-width: 460px) {
@@ -353,12 +371,12 @@ input[type="checkbox"] {
   }
 }
 
-input, textarea {
+input,
+textarea {
   -webkit-user-select: text;
   -khtml-user-select: text;
   -moz-user-select: text;
   -ms-user-select: text;
   user-select: text;
 }
-
 </style>
