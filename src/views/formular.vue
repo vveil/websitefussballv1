@@ -40,17 +40,21 @@
           </div>
         </div>
         <br />
-        <div class="bot-form">
+        <!-- <div class="bot-form">
           <button class="btn" id="btn" type="button">Weitere Person hinzufügen</button>
-          <br />
+          <br /> -->
           <div class="checkbox">
             <input type="checkbox" id="dserklärung" />
-            <label for="dserklärung">Ist ok</label>
+            <label for="dserklärung">Hiermit willige ich die Verarbeitung der von mir angegebenen personenbezogenen Daten ein und erkläre mich mit den Datenschutzregelungen in der <a href="...">Datenschutzerklärung</a> einverstanden.</label>
           </div>
           <br />
           <br />
-          <button class="btn2" id="btn2" name="absenden" type="submit" disabled>Absenden</button>
-        </div>
+          <button class="btn2" id="btn2" name="absenden" type="submit" disabled>
+            <div class="popup" onclick="myFunction()">Absenden
+               <span class="popuptext" id="myPopup">Absenden</span>
+            </div>
+          </button>
+        <!-- </div> -->
       </form>
     </div>
   </div>
@@ -287,6 +291,59 @@ input[type="checkbox"] {
   width: 100%;
   text-align: center;
   color: #ffffff;
+}
+
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
 }
 
 @media screen and (max-width: 460px) {

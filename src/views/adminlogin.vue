@@ -73,10 +73,10 @@ input {
   float: right;
 }
 button {
-  font-size: 1em;
+  font-size: 0.8em;
   border: 1px solid;
   justify-content: center;
-  padding: 0.6rem 2rem;
+  padding: 0.4rem 0.8rem;
   text-align: center;
   float: right;
   border-radius: 4px;
