@@ -20,7 +20,7 @@
           <br />
           <div class="inner-form">
             <div class="label">Telefon</div>
-            <input type="number" name="telefon" />
+            <input type="number" name="telefon" id="telefon" />
           </div>
           <br />
           <div class="inner-form">
@@ -40,7 +40,7 @@
           </div>
         </div>
         <br />
-        <div class="bot-form">
+        <!-- <div class="bot-form">
           <button class="btn" id="btn" type="button">Weitere Person hinzufügen</button>
         <br />-->
         <div class="checkbox">
@@ -51,6 +51,7 @@
               href="..."
             >Datenschutzerklärung</a> einverstanden.
           </label>
+<<<<<<< HEAD
         </div>
         <br />
         <br />
@@ -62,7 +63,18 @@
           <br />
           <br />
           <button class="btn2" id="btn2" name="absenden" type="submit">Absenden</button>
+=======
+>>>>>>> TestBranchHanne
         </div>
+        <br />
+        <br />
+        <button class="btn2" id="btn2" name="absenden" type="submit">
+          <div class="popup" v-on:click="myFunction">
+            Absenden
+            <span class="popuptext" id="myPopup">Formular erfolreich abgesendet</span>
+          </div>
+        </button>
+        <!-- </div> -->
       </form>
     </div>
   </div>
@@ -71,7 +83,6 @@
 <script>
 import axios from "axios";
 import eventSelector from "../components/eventSelector.vue";
-
 export default {
   name: "Formular",
   components: {
@@ -110,7 +121,11 @@ export default {
           ort: newPerson.ort,
           eID: 2,
         })
-        .then((res) => alert(res.data))
+        .then((res) => {
+          alert(res.data);
+          var popup = document.getElementById("myPopup");
+          popup.classList.toggle("show");
+        })
         .catch((err) => console.debug(err));
     },
     checkInput() {
@@ -299,6 +314,67 @@ input[type="checkbox"] {
   color: #ffffff;
 }
 
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  visibility: hidden;
+  width: 260px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 200%;
+  left: 50%;
+  margin-left: -130px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @media screen and (max-width: 460px) {
   .wrapper {
     margin: 25px auto 0;
@@ -307,5 +383,14 @@ input[type="checkbox"] {
     width: 100%;
     margin: 5px 0;
   }
+}
+
+input,
+textarea {
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 </style>

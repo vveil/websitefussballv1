@@ -16,7 +16,7 @@ export default {
     return {
       index: 1,
       options: [{
-          value:1,
+          value:1, 
           label:'option1'
       },{
           value:2,
