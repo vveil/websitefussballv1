@@ -20,7 +20,7 @@
           <br />
           <div class="inner-form">
             <div class="label">Telefon</div>
-            <input type="number" name="telefon" />
+            <input type="number" name="telefon" id="telefon" />
           </div>
           <br />
           <div class="inner-form">
@@ -49,7 +49,7 @@
           </div>
           <br />
           <br />
-          <button class="btn2" id="btn2" name="absenden" type="submit" disabled>
+          <button class="btn2" id="btn2" name="absenden" type="submit">
             <div class="popup" onclick="myFunction()">Absenden
                <span class="popuptext" id="myPopup">Absenden</span>
             </div>
@@ -63,7 +63,6 @@
 <script>
 import axios from "axios";
 import eventSelector from "../components/eventSelector.vue";
-
 export default {
   name: "Formular",
   components: {
@@ -353,4 +352,13 @@ input[type="checkbox"] {
     margin: 5px 0;
   }
 }
+
+input, textarea {
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
 </style>
