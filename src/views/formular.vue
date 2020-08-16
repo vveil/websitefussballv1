@@ -5,7 +5,7 @@
     </div>
 
     <div class="form">
-      <form @submit="addPerson">
+      <form @input="checkInput" @submit="addPerson">
         <div class="top-form">
           <eventSelector />
           <div class="inner-form">
@@ -42,10 +42,22 @@
         <br />
         <div class="bot-form">
           <button class="btn" id="btn" type="button">Weitere Person hinzufügen</button>
-          <br />
-          <div class="checkbox">
-            <input type="checkbox" id="dserklärung" />
-            <label for="dserklärung">Ist ok</label>
+        <br />-->
+        <div class="checkbox">
+          <input type="checkbox" id="dserklärung" />
+          <label for="dserklärung">
+            Hiermit willige ich die Verarbeitung der von mir angegebenen personenbezogenen Daten ein und erkläre mich mit den Datenschutzregelungen in der
+            <a
+              href="..."
+            >Datenschutzerklärung</a> einverstanden.
+          </label>
+        </div>
+        <br />
+        <br />
+        <button class="btn2" id="btn2" name="absenden" type="submit" disabled>
+          <div class="popup" v-on:click="myFunction">
+            Absenden
+            <span class="popuptext" id="myPopup">Formular erfolreich abgesendet</span>
           </div>
           <br />
           <br />
@@ -104,15 +116,15 @@ export default {
     checkInput() {
       if (this.vorname == "") {
         return;
-      } else if (this.nachname == "") {
+      } else if (this.nachname.length == 0) {
         return;
-      } else if (this.telefon == "") {
+      } else if (this.telefon.length == 0) {
         return;
-      } else if (this.adresse == "") {
+      } else if (this.adresse.length == 0) {
         return;
-      } else if (this.plz == "") {
+      } else if (this.plz.length == 0) {
         return;
-      } else if (this.ort == "") {
+      } else if (this.ort.length == 0) {
         return;
       } else {
         this.absenden.disabled = false;
