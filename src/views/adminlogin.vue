@@ -33,7 +33,7 @@ export default {
   methods: {
     login(){
       axios.post('ajaxfile.php', {
-        request: 1,
+        request: 5,
         username: this.username,
         password: this.password
       })

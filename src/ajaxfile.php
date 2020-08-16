@@ -5,27 +5,9 @@ $data = json_decode(file_get_contents("php://input"));
 
 $request = $data->request;
 
-// // Fetch All records
-if ($request == 1) {
-    echo "Entered request 1 successfully";
-
-    $username = $data->username;
-    $password = $data->password;
-
-    $sql = "SELECT username, password FROM `verein` WHERE username = \"$username\" AND password = \"$password\"";
-    $user_data = mysqli_query($link, $sql);
-    if (mysqli_num_rows($user_data) == 0) {
-        echo "Gerade 0 Ergebnisse.";
-    } else {
-        echo "Sollte geklappt haben";
-    }
-
-    exit;
-}
-
 // add person
 if ($request == 2) {
-    echo "Entered request 2 successfully";
+    echo "Entered request 2 successfully\n";
 
     $fname = $data->vorname;
     $lname = $data->nachname;
@@ -35,52 +17,54 @@ if ($request == 2) {
     $address = $data->adresse;
     $eID = $data->eID;
 
-    $sql = "INSERT INTO `teilnehmer`(name, vorname, telefonnummer, plz, ort, adresse, eID) VALUES(\"$lname\", \"$fname\", \"$phone\", \"$plz\", \"$city\", \"$address\", \"$eID\")";
+    $sql = "INSERT INTO `teilnehmer`(name, vorname, telefonnummer, plz, ort, adresse, logTime, eID) VALUES(\"$lname\", \"$fname\", \"$phone\", \"$plz\", \"$city\", \"$address\", \"CURRENT_TIMESTAMP\", \"$eID\")";
 
     if (mysqli_query($link, $sql)) {
-        echo "New record created successfully";
+        echo "New record created successfully\n";
     } else {
-        echo "Error: " . $sql . mysqli_error($link);
+        echo "Error: " . $sql . mysqli_error($link) . "\n";
     }
 
     exit;
 }
 
-// Add record
-// if($request == 2){
-//   $username = $data->username;
-//   $name = $data->name;
-//   $email = $data->email;
+// Delete record
+if ($request == 4) {
 
-//   $userData = mysqli_query($con,"SELECT * FROM users WHERE username='".$username."'");
-//   if(mysqli_num_rows($userData) == 0){
-//     mysqli_query($con,"INSERT INTO users(username,name,email) VALUES('".$username."','".$name."','".$email."')");
-//     echo "Insert successfully";
-//   }else{
-//     echo "Username already exists.";
-//   }
+    $passwordHash = password_hash($data->password, PASSWORD_DEFAULT);
 
-//   exit;
-// }
+    $sql = "UPDATE `verein` SET `password` = \"$passwordHash\" WHERE `verein`.`username` = \"$data->username\"";
+    if(mysqli_query($link, $sql)){
+        echo "Request was successful \n";
+    } else {
+        echo "Requst failed! \n";
+    }
 
-// // Update record
-// if($request == 3){
-//   $id = $data->id;
-//   $name = $data->name;
-//   $email = $data->email;
+    exit;
+}
 
-//   mysqli_query($con,"UPDATE users SET name='".$name."',email='".$email."' WHERE id=".$id);
- 
-//   echo "Update successfully";
-//   exit;
-// }
+// verify login
+if ($request == 5) { 
 
-// // Delete record
-// if($request == 4){
-//   $id = $data->id;
+    $sql = "SELECT `password` FROM `verein` WHERE `verein`.`username` = \"$data->username\"";
+    $query = mysqli_query($link, $sql);
 
-//   mysqli_query($con,"DELETE FROM users WHERE id=".$id);
+    if(!$query){
+        echo "Something went wrong fetching the hash from the database \n";
+    }
 
-//   echo "Delete successfully";
-//   exit;
-// }
+    $queryArray = mysqli_fetch_array($query);
+
+    echo "Hash: ". $queryArray['password'] . "\n";
+
+    if(password_verify($data->password, $queryArray['password'])){
+        echo "Log In Successful \n";
+    } else {
+        echo "Log In Failed For Some Reason \n";
+        echo "Hash: " . $queryArray['password'] . "\n";
+    }
+
+    exit;
+}
+
+?>
