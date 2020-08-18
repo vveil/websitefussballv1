@@ -2,15 +2,12 @@
   <div class="wrapper">
     <div class="event">
       <h1>Sommerfest 2020</h1>
-<<<<<<< HEAD
       <p>bei der SG BW 1921 Brachstedt</p>
       <br />
       <br />
       <div class="löschung">
         <p>Alle angegebenen Daten werden nach 4 Wochen gelöscht.</p>
       </div>
-=======
->>>>>>> master
     </div>
     <div class="form">
       <form @input="checkInput" @submit="addPerson">
@@ -47,7 +44,6 @@
           </div>
         </div>
         <br />
-<<<<<<< HEAD
         <div class="bot-form">
           <div class="label">
             *Pflichtfelder
@@ -74,23 +70,6 @@
             </div>
           </button>
         </div>
-=======
-        <div class="checkbox">
-          <input type="checkbox" id="dserklärung" />
-          <label for="dserklärung">
-            Hiermit willige ich die Verarbeitung der von mir angegebenen personenbezogenen Daten ein und erkläre mich mit den Datenschutzregelungen in der
-            <a href="...">Datenschutzerklärung</a> einverstanden.
-          </label>
-        </div>
-        <br />
-        <br />
-        <button class="btn2" id="btn2" name="absenden" type="submit">
-          <div class="popup" v-on:click="myFunction">
-            Absenden
-            <span class="popuptext" id="myPopup">Formular erfolreich abgesendet</span>
-          </div>
-        </button>
->>>>>>> master
       </form>
     </div>
   </div>
@@ -98,17 +77,8 @@
 
 <script>
 import axios from "axios";
-<<<<<<< HEAD
 export default {
   name: "Formular",
-=======
-// import eventSelector from "../components/eventSelector.vue";
-export default {
-  name: "Formular",
-  components: {
-    // eventSelector,
-  },
->>>>>>> master
   data() {
     return {
       vorname: "",
@@ -150,31 +120,10 @@ export default {
           popup.classList.toggle("show");
           setTimeout(() => location.reload(), 2000);
         })
-<<<<<<< HEAD
         .catch((err) => {
           console.debug(err);
           setTimeout(() => location.reload(), 2000);
         });
-=======
-        .catch((err) => console.debug(err));
-    },
-    checkInput() {
-      if (this.vorname == "") {
-        return;
-      } else if (this.nachname.length == 0) {
-        return;
-      } else if (this.telefon.length == 0) {
-        return;
-      } else if (this.adresse.length == 0) {
-        return;
-      } else if (this.plz.length == 0) {
-        return;
-      } else if (this.ort.length == 0) {
-        return;
-      } else {
-        this.absenden.disabled = false;
-      }
->>>>>>> master
     },
   },
 };
