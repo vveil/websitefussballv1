@@ -116,8 +116,14 @@ export default {
         })
         .then((res) => {
           console.log(res.data);
+          var popup = document.getElementById("myPopup");
+          popup.classList.toggle("show");
+          setTimeout(() => location.reload(), 2000);
         })
-        .catch((err) => console.debug(err));
+        .catch((err) => {
+          console.debug(err);
+          setTimeout(() => location.reload(), 2000);
+        });
     },
   },
 };
