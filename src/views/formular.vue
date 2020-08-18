@@ -1,66 +1,75 @@
 <template>
   <div class="wrapper">
     <div class="event">
-      <h1>Event-Name</h1>
+      <h1>Sommerfest 2020</h1>
+      <p>bei der SG BW 1921 Brachstedt</p>
+      <br />
+      <br />
+      <div class="löschung">
+      <p>Alle angegebenen Daten werden nach 4 Wochen gelöscht.</p>
+      </div>
     </div>
-
     <div class="form">
       <form @submit="addPerson">
         <div class="top-form">
-          <eventSelector />
+          
+          <!-- <eventSelector /> -->
           <div class="inner-form">
-            <div class="label">Vorname</div>
-            <input type="text" name="vorname" />
+            <div class="label">Vorname *</div>
+            <input type="text" name="vorname" required/>
           </div>
           <br />
           <div class="inner-form">
-            <div class="label">Nachname</div>
-            <input type="text" name="nachname" />
+            <div class="label">Nachname *</div>
+            <input type="text" name="nachname" required/>
           </div>
           <br />
           <div class="inner-form">
-            <div class="label">Telefon</div>
-            <input type="number" name="telefon" id="telefon" />
+            <div class="label">Telefon *</div>
+            <input type="number" name="telefon" id="telefon" required/>
           </div>
           <br />
           <div class="inner-form">
-            <div class="label">Straße, Hausnummer</div>
-            <input type="text" name="adresse" />
+            <div class="label">Straße, Hausnummer *</div>
+            <input type="text" name="adresse" required/>
           </div>
         </div>
-
         <div class="mid-form">
           <div class="inner-mid">
-            <div class="label">PLZ</div>
-            <input type="number" name="plz" />
+            <div class="label">PLZ *</div>
+            <input type="number" name="plz" required/>
           </div>
           <div class="inner-mid2">
-            <div class="label">Ort</div>
-            <input type="text" name="ort" />
+            <div class="label">Ort *</div>
+            <input type="text" name="ort" required/>
+            <br>
           </div>
         </div>
         <br />
-        <!-- <div class="bot-form">
-          <button class="btn" id="btn" type="button">Weitere Person hinzufügen</button>
-        <br />-->
+        <div class="bot-form">
+          <!-- <button class="btn" id="btn" type="button">Weitere Person hinzufügen</button>
+        <br /> -->
+        <div class="label" >*Pflichtfelder<br>
+            <br>
         <div class="checkbox">
-          <input type="checkbox" id="dserklärung" />
+          <div class="check1">
+          <input type="checkbox" id="dserklärung" required/>
+          </div>
+          <div class="check2">
           <label for="dserklärung">
-            Hiermit willige ich die Verarbeitung der von mir angegebenen personenbezogenen Daten ein und erkläre mich mit den Datenschutzregelungen in der
-            <a
-              href="..."
-            >Datenschutzerklärung</a> einverstanden.
+            Hiermit willige ich die Verarbeitung der von mir angege- benen personenbezogenen Daten ein und erkläre mich mit den Datenschutzregelungen in der
+            <a href="...">Datenschutzerklärung</a> einverstanden.
           </label>
+          </div>
         </div>
-        <br />
-        <br />
+        </div>
         <button class="btn2" id="btn2" name="absenden" type="submit">
           <div class="popup" v-on:click="myFunction">
             Absenden
             <span class="popuptext" id="myPopup">Formular erfolreich abgesendet</span>
           </div>
         </button>
-        <!-- </div> -->
+        </div>
       </form>
     </div>
   </div>
@@ -68,12 +77,12 @@
 
 <script>
 import axios from "axios";
-import eventSelector from "../components/eventSelector.vue";
+// import eventSelector from "../components/eventSelector.vue";
 export default {
   name: "Formular",
-  components: {
-    eventSelector,
-  },
+  // components: {
+  //   eventSelector,
+  // },
   data() {
     return {
       voname: "",
@@ -165,7 +174,7 @@ export default {
 
 .form {
   width: 100%;
-  margin-top: 10%;
+  margin-top: 4%;
 }
 
 /* form {
@@ -182,6 +191,8 @@ export default {
 
 .bot-form {
   width: 100%;
+  min-height: 65px;
+  margin: 10px 0;
 }
 
 input {
@@ -201,7 +212,7 @@ button {
   padding: 8px 13px;
 }
 
-#btn {
+/* #btn {
   border: 0;
   border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -214,7 +225,7 @@ button {
   background: transparent;
   border: 1px solid;
   position: static;
-}
+} */
 
 #btn2 {
   border: 0;
@@ -248,6 +259,10 @@ button {
   margin-bottom: 5px;
 }
 
+.top-form {
+  float: left;
+}
+
 .mid-form .inner-mid {
   width: 32%;
   float: left;
@@ -277,20 +292,58 @@ label {
   color: #000000;
 }
 
-.btn {
+.bot-form .label {
+  text-align: end;
+  margin-top: 15px;
+  
+}
+
+.bot-form .checkbox {
+  text-align: left;
+  margin-bottom: 80px;
+  /* overflow: hidden; */
+}
+
+/* .checkbox label {
+  vertical-align: baseline;
+  top: -10px;
+  display: inline-block;
+  padding-right: 10px;
+  padding-left: 22px;
+  text-indent: -22px;
+}
+
+.checkboxes input {
+  vertical-align: middle;
+}
+.checkboxes label span {
+  vertical-align: middle;
+} */
+
+/* .btn {
   background: #ffffff;
   width: 100%;
   border: solid 1px;
   text-align: center;
   color: teal;
-  display: block;
-}
+  display: block;s
+} */
 
 input[type="checkbox"] {
   float: left;
   width: 15px;
   height: 15px;
   text-align: left;
+}
+
+.check2 {
+  float: right;
+  width: 95%;
+  text-align: justify;
+}
+
+.löschung {
+  font-size: 0.8em;
 }
 
 .btn2 {
