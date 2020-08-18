@@ -6,69 +6,69 @@
       <br />
       <br />
       <div class="löschung">
-      <p>Alle angegebenen Daten werden nach 4 Wochen gelöscht.</p>
+        <p>Alle angegebenen Daten werden nach 4 Wochen gelöscht.</p>
       </div>
     </div>
     <div class="form">
       <form @submit="addPerson">
         <div class="top-form">
-          
-          <!-- <eventSelector /> -->
           <div class="inner-form">
             <div class="label">Vorname *</div>
-            <input type="text" name="vorname" required/>
+            <input type="text" v-model="vorname" required />
           </div>
           <br />
           <div class="inner-form">
             <div class="label">Nachname *</div>
-            <input type="text" name="nachname" required/>
+            <input type="text" v-model="nachname" required />
           </div>
           <br />
           <div class="inner-form">
             <div class="label">Telefon *</div>
-            <input type="number" name="telefon" id="telefon" required/>
+            <input type="number" v-model="telefon" id="telefon" required />
           </div>
           <br />
           <div class="inner-form">
             <div class="label">Straße, Hausnummer *</div>
-            <input type="text" name="adresse" required/>
+            <input type="text" v-model="adresse" required />
           </div>
         </div>
         <div class="mid-form">
           <div class="inner-mid">
             <div class="label">PLZ *</div>
-            <input type="number" name="plz" required/>
+            <input type="number" v-model="plz" required />
           </div>
           <div class="inner-mid2">
             <div class="label">Ort *</div>
-            <input type="text" name="ort" required/>
-            <br>
+            <input type="text" v-model="ort" required />
+            <br />
           </div>
         </div>
         <br />
         <div class="bot-form">
-          <!-- <button class="btn" id="btn" type="button">Weitere Person hinzufügen</button>
-        <br /> -->
-        <div class="label" >*Pflichtfelder<br>
-            <br>
-        <div class="checkbox">
-          <div class="check1">
-          <input type="checkbox" id="dserklärung" required/>
+          <div class="label">
+            *Pflichtfelder
+            <br />
+            <br />
+            <div class="checkbox">
+              <div class="check1">
+                <input type="checkbox" id="dserklärung" required />
+              </div>
+              <div class="check2">
+                <label for="dserklärung">
+                  Hiermit willige ich die Verarbeitung der von mir angege- benen personenbezogenen Daten ein und erkläre mich mit den Datenschutzregelungen in der
+                  <a
+                    href="https://eventvisitor.de/#/datenschutz"
+                  >Datenschutzerklärung</a> einverstanden.
+                </label>
+              </div>
+            </div>
           </div>
-          <div class="check2">
-          <label for="dserklärung">
-            Hiermit willige ich die Verarbeitung der von mir angege- benen personenbezogenen Daten ein und erkläre mich mit den Datenschutzregelungen in der
-            <a href="...">Datenschutzerklärung</a> einverstanden.
-          </label>
-          </div>
-        </div>
-        </div>
-        <button class="btn2" id="btn2" name="absenden" type="submit">
-          <div class="popup" v-on:click="myFunction">
-            Absenden
-            <span class="popuptext" id="myPopup">Formular erfolreich abgesendet</span>
-          </div>
-        </button>
+          <button class="btn2" id="btn2" name="absenden" type="submit">
+            <div class="popup">
+              Absenden
+              <span class="popuptext" id="myPopup">Formular erfolreich abgesendet</span>
+            </div>
+          </button>
         </div>
       </form>
     </div>
@@ -77,15 +77,11 @@
 
 <script>
 import axios from "axios";
-// import eventSelector from "../components/eventSelector.vue";
 export default {
   name: "Formular",
-  // components: {
-  //   eventSelector,
-  // },
   data() {
     return {
-      voname: "",
+      vorname: "",
       nachname: "",
       telefon: null,
       adresse: "",
@@ -105,6 +101,8 @@ export default {
         ort: this.ort,
       };
 
+      console.log(this.vorname);
+
       axios
         .post("ajaxfile.php", {
           request: 2,
@@ -114,31 +112,12 @@ export default {
           adresse: newPerson.adresse,
           plz: newPerson.plz,
           ort: newPerson.ort,
-          eID: 2,
+          eID: 3,
         })
         .then((res) => {
-          alert(res.data);
-          var popup = document.getElementById("myPopup");
-          popup.classList.toggle("show");
+          console.log(res.data);
         })
         .catch((err) => console.debug(err));
-    },
-    checkInput() {
-      if (this.vorname == "") {
-        return;
-      } else if (this.nachname == "") {
-        return;
-      } else if (this.telefon == "") {
-        return;
-      } else if (this.adresse == "") {
-        return;
-      } else if (this.plz == "") {
-        return;
-      } else if (this.ort == "") {
-        return;
-      } else {
-        this.absenden.disabled = false;
-      }
     },
   },
 };
@@ -295,7 +274,6 @@ label {
 .bot-form .label {
   text-align: end;
   margin-top: 15px;
-  
 }
 
 .bot-form .checkbox {

@@ -105,5 +105,8 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
+template, p, h1, h2, div, span {
+  text-align: left;
+}
 </style>

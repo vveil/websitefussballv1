@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-// import Formular from '../views/formular.vue'
 
 Vue.use(VueRouter)
 
@@ -17,8 +16,8 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "formular" */ '../views/formular.vue')
   },
   {
-    path: '/about',
-    name: 'About',
+    path: '/impressum',
+    name: 'Impressum',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -28,6 +27,11 @@ Vue.use(VueRouter)
     path: '/login',
     name: 'Vereinslogin',
     component: () => import(/* webpackChunkName: "adminlogin" */ '../views/adminlogin.vue')
+  },
+  {
+    path: '/datenschutz',
+    name: 'Datenschutz',
+    component: () => import('../components/datenschutz.vue')
   }
 ]
 
