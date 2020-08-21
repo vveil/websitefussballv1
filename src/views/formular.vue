@@ -322,8 +322,9 @@ input[type="checkbox"] {
 
 .check2 {
   float: right;
-  width: 95%;
+  width: 90%;
   text-align: justify;
+  font-size: 0.95em;
 }
 
 .löschung {
